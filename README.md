@@ -1,5 +1,6 @@
 # PHP
-### xsshtml.class.php   filter xss php class 
+### xsshtml.class.php   
+#### filter xss php class 
 Usage: 
 ```
 <?php
