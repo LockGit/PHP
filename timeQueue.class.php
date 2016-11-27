@@ -104,3 +104,4 @@ $obj->listen_task('demo',$func);
 //移除一个已经注册了的任务
 $obj->remove_task('bug');
 $obj->run();
+
