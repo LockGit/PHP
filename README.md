@@ -67,6 +67,5 @@ bool(true)
 http://localhost/test.php?user[1]=password&user[4294967296]=admin
 2^32 == 0x100000000 == 4294967296 所以是：user[4294967296]
 所有条件均符合，flag获得，如下图：
-![](https://github.com/LockGit/PHP/blob/master/ctf.jpeg)
-
 ```
+![](https://github.com/LockGit/PHP/blob/master/ctf.jpeg)
