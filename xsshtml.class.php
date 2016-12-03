@@ -3,19 +3,10 @@
  * PHP 富文本XSS过滤类
  *
  * @package XssHtml
- * @version 1.0.0 
- * @link http://phith0n.github.io/XssHtml
- * @since 20140621
- * @copyright (c) Phithon All Rights Reserved
  *
  */
 
 #
-# Written by Phithon <root@leavesongs.com> in 2014 and placed in
-# the public domain.
-#
-# phithon <root@leavesongs.com> 编写于20140621
-# From: XDSEC <www.xdsec.org> & 离别歌 <www.leavesongs.com>
 # Usage: 
 # <?php
 # require('xsshtml.class.php');
