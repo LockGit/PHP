@@ -40,6 +40,34 @@ $obj->run();
 
 ```
 
+### PHP协程
+```
+php coroutine.php
+多任务调度器
+task A 0
+task BBB 0
+task A 1
+task BBB 1
+task A 2
+task BBB 2
+task A 3
+task BBB 3
+task A 4
+task BBB 4
+task BBB 5
+task BBB 6
+task BBB 7
+task BBB 8
+task BBB 9
+task BBB 10
+task BBB 11
+task BBB 12
+task BBB 13
+task BBB 14
+两个任务是交替运行的, 而在第二个任务结束后, 只有第一个任务继续运行.
+```
+
+
 ### 一道PHP CTF 题目 
 ```
 <?php
