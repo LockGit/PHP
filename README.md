@@ -40,6 +40,59 @@ $obj->run();
 
 ```
 
+### timeTask.php 利用环形队列的思想实现一个定时任务
+```
+功能与上面timeQueue.class.php一样，都是计时器定时任务的实现，
+思想有所区别，上面是基于redis的zAdd实现，架构师之路上曾提出一个环形队列的思想，
+timeTask.php则是利用环形队列的思想代码实现,在一个闭合的圆环上形成3600个节点，每个节点上
+维护一个index的值(需要旋转的圈数),实际环境中task应该固化而不是存在一个变量数组里,
+因为假设进程奔溃,那么存储的task就消失了。当然，只是思想，代码可以继续完善
+
+//参数分别为：所执行的task,参数,延迟的时间
+timeTask::instance()->add_event('lock',[1,2,1],1);
+timeTask::instance()->add_event('root',[8,9,1],1);
+timeTask::instance()->add_event('test',[3,4,3],3);
+timeTask::instance()->add_event('test',[7,8,10],10);
+//设置回调函数
+$func = function($args){
+    echo date('Y-m-d H:i:s').",当前正在执行第".$args[2]."s任务...\n";
+    var_export($args);
+    echo "\n\n";
+};
+timeTask::instance()->listen_task('test',$func);
+timeTask::instance()->listen_task('lock',$func);
+timeTask::instance()->listen_task('root',$func);
+#移除一个已经注册的任务
+timeTask::instance()->remove_task('root');
+
+timeTask::instance()->run();
+
+执行结果：
+➜  ~ php timeTask.php
+2017-03-24 09:19:02,当前正在执行第1s任务...
+array (
+  0 => 1,
+  1 => 2,
+  2 => 1,
+)
+
+2017-03-24 09:19:04,当前正在执行第3s任务...
+array (
+  0 => 3,
+  1 => 4,
+  2 => 3,
+)
+
+2017-03-24 09:19:11,当前正在执行第10s任务...
+array (
+  0 => 7,
+  1 => 8,
+  2 => 10,
+)
+
+
+```
+
 ### PHP协程 coroutine.php
 ```
 php coroutine.php
