@@ -9,10 +9,21 @@ $html = '<html code>';
 $xss = new XssHtml($html);
 $html = $xss->getHtml();
 ?>
-```
-
 PHP Version > 5.0
 IE7+ or other browser
+collect from phith0n
+```
+
+### findMaxStr.php 查找某个字符串中连续字符串首次出现次数最多的那个字符及个数
+```
+➜  PHP git:(master) ✗ php findMaxStr.php
+动态规划计算出某个字符串中连续字符串首次出现次数最多的那个字符及个数
+Max Str Info:
+array (
+  'str' => 'x',
+  'cnt' => 8,
+)
+```
 
 ### timeQueue.class.php   
 #### 基于redis的定时任务
