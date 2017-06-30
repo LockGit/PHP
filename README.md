@@ -13,10 +13,12 @@ IE7+ or other browser
 collect from phith0n
 ```
 
-### findMaxStr.php 查找某个字符串中连续字符串首次出现次数最多的那个字符及个数
+### findMaxStr.php 查找某个字符串中连续字符首次出现次数最多的那个字符及个数
 ```
 ➜  PHP git:(master) ✗ php findMaxStr.php
-动态规划计算出某个字符串中连续字符串首次出现次数最多的那个字符及个数
+动态规划计算出某个字符串中连续字符首次出现次数最多的那个字符及个数
+例：aabbbacdaadddeeedddmmdddfxxxxxxxxbxxxbxxgbbbbbbbbxxxxxxx
+连续出现最多的字符为x
 Max Str Info:
 array (
   'str' => 'x',
