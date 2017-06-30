@@ -1,8 +1,7 @@
 # PHP
-### xsshtml.class.php   
-#### filter xss php class 
-Usage: 
+### xsshtml.class.php  filter xss php class ，xss过滤类
 ```
+Usage: 
 <?php
 require('xsshtml.class.php');
 $html = '<html code>';
