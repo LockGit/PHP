@@ -235,6 +235,7 @@ Successfully opened reverse shell to 127.0.0.1:1234
 ```
 硬搬设计模式是错误的
 ```
+
 ### abstractFactory.php 抽象工厂
 ```
  * 抽象工厂模式为一组相关或相互依赖的对象创建提供接口，而无需指定其具体实现类。
