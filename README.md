@@ -1,4 +1,38 @@
 # PHP
+### 关于内存泄露与垃圾回收 
+```
+php 5.3之前使用的垃圾回收机制是单纯的"引用计数":
+也就是每个内存对象都分配一个计数器，当内存对象被变量引用时，计数器+1；
+当变量引用撤掉后，计数器-1；当计数器=0时，表明内存对象没有被使用，
+该内存对象则进行销毁，垃圾回收完成。
+
+"引用计数"存在的问题:
+就是当两个或多个对象互相引用形成环状后，内存对象的计数器则不会消减为0；
+这时候，这一组内存对象已经没用了，但是不能回收，从而导致内存泄露。
+
+php5.3开始，使用了新的垃圾回收机制。
+在引用计数基础上，实现了一种复杂的算法，来检测内存对象中引用环的存在，以避免内存泄露。
+PHP中，引用计数为0，则内存立刻释放。也就是说，不存在环状引用的变量，离开变量的作用域，内存被立刻释放。
+环状引用检测则是在满足一定条件下触发。
+而实际编码中可以通过 gc_collect_cycles() 函数来主动进行环状引用检测，触发垃圾回收。
+```
+
+### debug工具【xdebug,xhprof】
+```
+重量级xdebug：
+xdebug_start_trace();
+1. 默认会在tmp目录生成一个文件，包含了代码执行时间
+2. 可以找到运行很慢的程序出来
+3. 是那一行影响了速度，用时情况
+
+xhprof可生产调用链，耗时函数，以图展示等:
+// start profiling
+xhprof_enable();
+// stop profiler
+$xhprof_data = xhprof_disable();
+```
+
+
 ### findMaxStr.php 查找某个字符串中连续字符首次出现次数最多的那个字符及个数
 ```
 ➜  PHP git:(master) ✗ php findMaxStr.php
@@ -181,7 +215,6 @@ if($_GET['user'] === $user && $_GET['user'][0] != 'admin'){
 ?>
 <h3><?php echo $flag;?>
 
-上面一段php程序，要求攻击者能够获得$flag即为成功
 分析：
 按照正常逻辑是无法获得flag的，but，php是一个神奇的语言。
 官方曾发布过一个补丁：
@@ -257,7 +290,7 @@ Successfully opened reverse shell to 127.0.0.1:1234
   for，
   注释，
   等模板语法
-+ [点这儿](https://github.com/LockGit/PHP/tree/master/initFrame)
++ [initFrame初始代码](https://github.com/LockGit/PHP/tree/master/initFrame)
 
 ### -----------分割线(设计模式篇)-------------
 ```
